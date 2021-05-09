@@ -4,9 +4,35 @@ Flappy Bird Game
 
 Author: Lachlan Hynds
 """
-from tkinter import *
-root = Tk()
-root.title("Flappy Bird Game")
+import tkinter
+
+
+class Menu:
+
+    _BUTTON_HEIGHT = 2
+    _BUTTON_WIDTH = 2
+    _PLAY_BUTTON = "Start"
+
+    def __init__(self):
+        """"""
+        self.canvas = None
+        self.play_button = None
+
+    def canvas_create(self):
+        """Creates a window for the frame to be displayed"""
+        self.canvas = tkinter.Tk()
+        self.canvas.geometry("500x700")
+        self.canvas.mainloop()
+
+    def menu_buttons(self):
+        """"""
+        self.play_button = tkinter.Button(self.canvas, command=
+                                          text=Menu._PLAY_BUTTON,
+                                          width=Menu._BUTTON_WIDTH,
+                                          height=Menu._BUTTON_HEIGHT)
+        self.play_button.pack()
+
+    def start_game(self):
 
 
 class GameFrame:
@@ -15,22 +41,26 @@ class GameFrame:
     _FRAME_WIDTH = 500
     _FRAME_COLOUR = "dodger blue"
 
-    def __init__(self):
+    def __init__(self, canvas):
         """"""
-        self.canvas = None
+        self.game_frame = None
+        self.canvas = canvas
 
     def create_frame(self):
         """Creates the game canvas and background"""
-        self.canvas = Tk.Canvas(self, width=GameFrame._FRAME_WIDTH,
-                                height=GameFrame._FRAME_HEIGHT,
-                                background=GameFrame._FRAME_COLOUR)
-        self.canvas.pack()
+        self.game_frame = tkinter.Canvas(self.canvas,
+                                         width=GameFrame._FRAME_WIDTH,
+                                         height=GameFrame._FRAME_HEIGHT,
+                                         background=GameFrame._FRAME_COLOUR)
+        self.game_frame.pack()
 
 
 def main():
-    start = GameFrame()
-    start.create_frame()
+    start = Menu()
+    start.canvas_create()
+    start.canvas.mainloop()
+    start.menu_buttons()
 
 
-root.mainloop()
-
+if __name__ == '__main__':
+    main()
