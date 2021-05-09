@@ -5,6 +5,7 @@ Flappy Bird Game
 Author: Lachlan Hynds
 """
 import tkinter
+import random
 
 
 class Menu:
@@ -15,24 +16,26 @@ class Menu:
 
     def __init__(self):
         """"""
-        self.canvas = None
+        self.canvas = tkinter.Tk()
         self.play_button = None
 
     def canvas_create(self):
         """Creates a window for the frame to be displayed"""
-        self.canvas = tkinter.Tk()
         self.canvas.geometry("500x700")
         self.canvas.mainloop()
 
     def menu_buttons(self):
         """"""
-        self.play_button = tkinter.Button(self.canvas, command=
+        self.play_button = tkinter.Button(self.canvas,
+                                          command=Menu.start_game(self),
                                           text=Menu._PLAY_BUTTON,
                                           width=Menu._BUTTON_WIDTH,
                                           height=Menu._BUTTON_HEIGHT)
         self.play_button.pack()
 
     def start_game(self):
+        starting_game_new = GameFrame
+        starting_game_new.create_frame()
 
 
 class GameFrame:
