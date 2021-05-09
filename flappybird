@@ -4,3 +4,33 @@ Flappy Bird Game
 
 Author: Lachlan Hynds
 """
+from tkinter import *
+root = Tk()
+root.title("Flappy Bird Game")
+
+
+class GameFrame:
+
+    _FRAME_HEIGHT = 700
+    _FRAME_WIDTH = 500
+    _FRAME_COLOUR = "dodger blue"
+
+    def __init__(self):
+        """"""
+        self.canvas = None
+
+    def create_frame(self):
+        """Creates the game canvas and background"""
+        self.canvas = Tk.Canvas(self, width=GameFrame._FRAME_WIDTH,
+                                height=GameFrame._FRAME_HEIGHT,
+                                background=GameFrame._FRAME_COLOUR)
+        self.canvas.pack()
+
+
+def main():
+    start = GameFrame()
+    start.create_frame()
+
+
+root.mainloop()
+
