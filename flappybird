@@ -47,6 +47,7 @@ class Menu:
         self.exit_button.pack_forget()
         self.starting_game_new = GameFrame(canvas=self.canvas)
         self.starting_game_new.create_frame()
+        self.starting_game_new.create_bird()
 
     def exit_game(self):
         self.canvas.destroy()
@@ -57,11 +58,17 @@ class GameFrame:
     _FRAME_HEIGHT = 700
     _FRAME_WIDTH = 500
     _FRAME_COLOUR = "dodger blue"
+    _X_BIRD = 200
+    _X_BIRD_2 = 250
+    _Y_BIRD = 150
+    _Y_BIRD_2 = 200
+    _BIRD_COLOUR = "gold2"
 
     def __init__(self, canvas):
         """"""
         self.game_frame = None
         self.canvas = canvas
+        self.bird = None
 
     def create_frame(self):
         """Creates the game canvas and background"""
@@ -70,6 +77,13 @@ class GameFrame:
                                          height=GameFrame._FRAME_HEIGHT,
                                          background=GameFrame._FRAME_COLOUR)
         self.game_frame.pack()
+
+    def create_bird(self):
+        self.bird = self.canvas.create_rectangle(GameFrame._X_BIRD,
+                                                 GameFrame._Y_BIRD,
+                                                 GameFrame._X_BIRD_2,
+                                                 GameFrame._Y_BIRD_2,
+                                                 fill=GameFrame._BIRD_COLOUR)
 
 
 def main():
