@@ -13,14 +13,12 @@ class Menu:
     _BUTTON_HEIGHT = 2
     _BUTTON_WIDTH = 10
     _PLAY_BUTTON = "Start"
-    _INFO_BUTTON = "Information"
     _EXIT_BUTTON = "Exit"
 
     def __init__(self):
         """"""
         self.canvas = tkinter.Tk()
         self.play_button = None
-        self.info_button = None
         self.exit_button = None
         self.starting_game_new = None
 
@@ -37,28 +35,21 @@ class Menu:
                                           height=Menu._BUTTON_HEIGHT)
         self.play_button.pack()
 
-        self.info_button = tkinter.Button(self.canvas,
-                                          command=self.start_game,
-                                          text=Menu._INFO_BUTTON,
-                                          width=Menu._BUTTON_WIDTH,
-                                          height=Menu._BUTTON_HEIGHT)
-        self.info_button.pack()
-
         self.exit_button = tkinter.Button(self.canvas,
-                                          command=self.start_game,
+                                          command=self.exit_game,
                                           text=Menu._EXIT_BUTTON,
                                           width=Menu._BUTTON_WIDTH,
                                           height=Menu._BUTTON_HEIGHT)
         self.exit_button.pack()
 
     def start_game(self):
+        self.play_button.pack_forget()
+        self.exit_button.pack_forget()
+        self.starting_game_new = GameFrame(canvas=self.canvas)
         self.starting_game_new.create_frame()
 
-    #def infomation(self):
-        #self.
-
-    #def exit(self):
-        #self.
+    def exit_game(self):
+        self.canvas.destroy()
 
 
 class GameFrame:
